@@ -104,7 +104,7 @@ public class dpProblems {
     }
 
     @Test
-    public void testMaxProfit(dpProblems dp) {
+    public void testMaxProfit() {
         int[] price = {7,1,5,3,6,4};
         int[] price1 = {7,6,4,3,1};
         System.out.println(maxProfit(price1));

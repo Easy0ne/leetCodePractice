@@ -49,6 +49,7 @@ public class HexToDec {
                 sum += num * valueVect.elementAt(n - i -1);
             }
             System.out.println(sum);
+            System.out.println(Long.parseLong(hexStr.substring(2), 16));
 
         }
     }
