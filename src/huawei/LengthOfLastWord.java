@@ -11,9 +11,14 @@ public class LengthOfLastWord {
 
     public static void lengthOfLastWord() {
         Scanner cin = new Scanner(System.in);
-        while (cin.hasNext()) {
+        while(cin.hasNext()) {
             String str = cin.nextLine();
-//            str
+            String[] words = str.split(" ");
+            System.out.println(words[words.length - 1].length());
         }
+    }
+
+    public static void main(String[] args) {
+        lengthOfLastWord();
     }
 }

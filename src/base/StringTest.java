@@ -2,8 +2,7 @@ package base;
 
 import org.junit.Test;
 
-import java.util.HashMap;
-import java.util.Random;
+import java.util.*;
 
 /**
  * @description:
