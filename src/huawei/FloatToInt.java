@@ -3,7 +3,7 @@ package huawei;
 
 import java.util.Scanner;
 /**
- * @description:
+ * @description: HJ7 取近似值
  * @author: wangzk
  * @date: 2020-08-11 11:45
  */

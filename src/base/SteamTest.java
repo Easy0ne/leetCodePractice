@@ -34,7 +34,6 @@ public class SteamTest {
         }
 
         //Stream
-        //
         List<Integer> streamList = itgList.stream()
                 .mapToInt(x -> x)
                 .map(x -> x+1)

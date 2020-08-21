@@ -3,7 +3,7 @@ package huawei;
 import java.util.Scanner;
 
 /**
- * @description:
+ * @description:    HJ1 字符串最后一个单词长度
  * @author: wangzk
  * @date: 2020/8/11 20:16
  */

@@ -1,25 +1,26 @@
 package huawei;
-import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.Vector;
 
 /**
- * @description:
+ * @description:    HJ5 进制转换
  * @author: wangzk
  * @date: 2020-08-04 08:45
  */
 public class HexToDec {
-    private Vector<Integer> valueVect = new Vector<>(8);
+    private List<Integer> valueList = new ArrayList<>(8);
 
     public HexToDec() {
         initValueVect();
     }
 
     private void initValueVect() {
-        valueVect.add(1);
+        valueList.add(1);
         for (int i = 1; i < 8; i++) {
-            valueVect.add(valueVect.lastElement() * 16);
+            valueList.add(valueList.get(i-1) * 16);
         }
     }
 
@@ -46,7 +47,7 @@ public class HexToDec {
                     System.out.println("");
                     continue;
                 }
-                sum += num * valueVect.elementAt(n - i -1);
+                sum += num * valueList.get(n - i -1);
             }
             System.out.println(sum);
             System.out.println(Long.parseLong(hexStr.substring(2), 16));

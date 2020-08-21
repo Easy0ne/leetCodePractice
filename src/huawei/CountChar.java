@@ -3,7 +3,7 @@ package huawei;
 import java.util.Scanner;
 
 /**
- * @description:
+ * @description:    HJ2 计算字符个数
  * @author: wangzk
  * @date: 2020/8/19 19:29
  */
