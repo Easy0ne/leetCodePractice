@@ -1,4 +1,4 @@
-package base;
+package lang;
 
 import org.junit.Test;
 

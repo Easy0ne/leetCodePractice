@@ -1,10 +1,7 @@
-package base;
-
-import algorithm.test.tree.Tree;
+package lang;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * @description:
