@@ -17,6 +17,13 @@ import java.util.Arrays;
 
 public class CoinChange {
 
+    public static void main(String[] args) {
+        CoinChange coinChange = new CoinChange();
+        int[] coins = {2, 5};
+        int amount = 11;
+        System.out.println(coinChange.coinChange(coins, amount));
+    }
+
 
     public int coinChange(int[] coins, int amount) {
         Arrays.sort(coins);
@@ -24,19 +31,30 @@ public class CoinChange {
         if (amount == 0) return 0;
         if (n_types == 0) return -1;
         if (amount < coins[0]) return -1;
-        int n_base_large = amount / coins[n_types-1];
-        int capacity = amount - n_base_large * coins[n_types-1];
-        int[][] f = new int[n_types][capacity+1];
+
+        int capacity = amount;
+        int[][] dp = new int[n_types][capacity+1];
         for (int i = 0; i < n_types; i++) {
             for (int j = 1; j <= capacity; j++) {
-                f[i][j] = Integer.MAX_VALUE;
+                dp[i][j] = Integer.MAX_VALUE>>2;
             }
         }
 
-        for (int j = 0; j <= capacity; j++) {
-            for (int k = 0; k < ; k++) {
-
+        for (int j = 1; j <= capacity; j++) {
+            for (int k = 0; k*coins[0] <= j ; k++) {
+                if (k* coins[0] == j)
+                    dp[0][j] = k;
             }
         }
+
+        for (int i = 1; i < n_types; i++) {
+            for (int j = 0; j <= capacity; j++) {
+                for (int k = 0; k*coins[i] <= j; k++) {
+                    dp[i][j] = Math.min(k+dp[i-1][j-k*coins[i]], dp[i][j]);
+                }
+            }
+        }
+
+        return dp[n_types-1][capacity] > amount ? -1 : dp[n_types-1][capacity];
     }
 }

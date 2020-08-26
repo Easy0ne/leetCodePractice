@@ -23,29 +23,29 @@ public class TwoSum {
         return result;
     }
 
+
     public int[] twoSum(int[] nums, int target) {
-        int n = nums.length;
         int[] result = new int[2];
-        HashMap<Integer, Integer> hm = new HashMap<Integer, Integer>();
+        if (nums == null || nums.length == 0) return result;
+
+        int n = nums.length;
+        HashMap<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < n; i++) {
-            if (hm.containsKey(target - nums[i])) {
-                result[0] = hm.get(target - nums[i]);
-                result[1] = i;
+            if (map.containsKey(nums[i])){
+                int idx0 = map.get(nums[i]);
+                int idx1 = i;
+                result[0] = idx0;
+                result[1] = idx1;
                 return result;
             }
-            hm.put(nums[i], i); //先containsKey再put是为了target/2不重复使用。
+            map.put(target - nums[i], i);
         }
         return result;
     }
 
-    public void test(){
-        int[] nums = {3,2,4};
-        int target = 6;
-        System.out.println(Arrays.toString(twoSum(nums, target)));
-    }
-
     public static void main(String[] args) {
-        TwoSum ts = new TwoSum();
-        ts.test();
+        TwoSum twoSum = new TwoSum();
+        int[] nums = {2, 7, 11, 15};
+        System.out.println(Arrays.toString(twoSum.twoSum(nums, 9)));
     }
 }

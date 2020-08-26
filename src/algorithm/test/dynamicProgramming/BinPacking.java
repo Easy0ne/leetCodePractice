@@ -78,6 +78,7 @@ public class BinPacking {
         int sum = Arrays.stream(nums).sum() / 2;
         int[] w = nums;
         //对于恰好装满的背包问题，默认的f值应该为-INF(除capacity为0外)，因为默认情况是什么都不装，而此时的装法并不是一个解。
+        //用此值来标注，使用了该子路径的路径也是不合理的，应当也标为-INF
         //否则，在比较max的时候，会把f[i][j]值为0对应的装法当作可行解。
         // 动态填表部分不变(递推关系是一样的)。
         int[][] f = new int[n_types][sum+1];
