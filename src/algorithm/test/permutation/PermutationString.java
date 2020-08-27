@@ -1,4 +1,4 @@
-package algorithm.test.string;
+package algorithm.test.permutation;
 
 import org.junit.Test;
 
