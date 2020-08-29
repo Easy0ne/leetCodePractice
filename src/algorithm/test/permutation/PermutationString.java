@@ -106,7 +106,7 @@ public class PermutationString {
             while (lIdx > -1 && chars[lIdx] >= chars[lIdx+1])
                 lIdx--;
             if (lIdx == -1) return strList;
-            while (chars[rIdx] < chars[lIdx])
+            while (chars[rIdx] <= chars[lIdx])
                 rIdx--;
             swap(chars, lIdx, rIdx);
             reverse(chars, lIdx+1, n-1);

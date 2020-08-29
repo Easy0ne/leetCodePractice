@@ -2,6 +2,7 @@ package algorithm.test.permutation;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,9 +22,10 @@ public class Permutation {
     public List<List<Integer>> permute(int[] nums) {
         if (nums == null || nums.length == 0) return null;
         int n = nums.length, n_counter = n;
-        int capacity = 1;
-        while (n_counter != 1) capacity *= n_counter--;
-        List<List<Integer>> result = new ArrayList<>(capacity);
+//        int capacity = 1;
+//        while (n_counter != 1) capacity *= n_counter--;
+//        List<List<Integer>> result = new ArrayList<>(capacity);
+        List<List<Integer>> result = new LinkedList<>();
         permuteHelper(nums, 0, result);
         return result;
     }
@@ -48,9 +50,27 @@ public class Permutation {
 
     /*
     字典序全排列
+    leetCode 运行时间 8ms，内存消耗40M
      */
     public List<List<Integer>> permuteByDictSort(int[] nums){
+        if (nums == null || nums.length == 0) return null;
+        int n = nums.length, n_counter = n, capacity = 1;
+        while (n_counter > 1) capacity *= n_counter--;
+        List<List<Integer>> itgLists = new LinkedList<>();
+        Arrays.sort(nums);
+        itgLists.add(Arrays.stream(nums).boxed().collect(Collectors.toList()));
 
+        while (true) {
+            int idx1 = n-2;
+            while (idx1 >= 0 && nums[idx1] >= nums[idx1+1]) idx1--;
+            if (idx1 == -1) break;
+            int idx2 = n-1;
+            while (nums[idx2] <= nums[idx1]) idx2--;
+            swap(nums, idx1, idx2);
+            reverse(nums, idx1+1, n-1);
+            itgLists.add(Arrays.stream(nums).boxed().collect(Collectors.toList()));
+        }
+        return itgLists;
     }
 
 
@@ -58,5 +78,12 @@ public class Permutation {
         int temp = nums[idx1];
         nums[idx1] = nums[idx2];
         nums[idx2] = temp;
+    }
+
+    public static void reverse(int[] nums, int idx1, int idx2) {
+        int n = idx2 - idx1 + 1;
+        for (int i = 0; i < n/2; i++) {
+            swap(nums, idx1+i, idx2-i);
+        }
     }
 }
