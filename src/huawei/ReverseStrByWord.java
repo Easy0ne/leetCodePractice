@@ -10,7 +10,7 @@ import java.util.Scanner;
  */
 public class ReverseStrByWord {
 
-    public static void reverseStrByWord() {
+    public void reverseStrByWord() {
         Scanner cin = new Scanner(System.in);
         while (cin.hasNext()) {
             String str = cin.nextLine();
@@ -25,7 +25,15 @@ public class ReverseStrByWord {
         }
     }
 
+    public void reverseStrByWord2() {
+        Scanner cin = new Scanner(System.in);
+        while (cin.hasNext()) {
+            String str = cin.nextLine();
+            str.replaceAll("![a-z|A-Z]", " ").replaceAll("(/s)*", " ");
+        }
+    }
+
     public static void main(String[] args) {
-        reverseStrByWord();
+        new ReverseStrByWord().reverseStrByWord();
     }
 }
