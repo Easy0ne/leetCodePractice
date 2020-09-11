@@ -10,11 +10,15 @@ import java.util.Scanner;
  */
 public class ReverseStrByWord {
 
+    public static void main(String[] args) {
+        new ReverseStrByWord().reverseStrByWord2();
+    }
+
     public void reverseStrByWord() {
         Scanner cin = new Scanner(System.in);
         while (cin.hasNext()) {
             String str = cin.nextLine();
-            if (str.replaceAll(" ", "").equals(""))
+            if ((str = str.replaceAll(" ", "")).equals(""))
                 continue;
             String[] words = str.split(" ");
             for (int i = words.length-1; i >= 1; i--) {
@@ -29,11 +33,16 @@ public class ReverseStrByWord {
         Scanner cin = new Scanner(System.in);
         while (cin.hasNext()) {
             String str = cin.nextLine();
-            str.replaceAll("![a-z|A-Z]", " ").replaceAll("(/s)*", " ");
+            String sentence = str.replaceAll("[^a-zA-Z]", " ").replaceAll("(\\s)+", " ");
+            if ((str = sentence.replaceAll(" ", "")).equals(""))
+                continue;
+            String[] words = sentence.split(" ");
+            for (int i = words.length-1; i >= 1; i--) {
+                System.out.print(words[i] + " ");
+            }
+            System.out.println(words[0]);
         }
     }
 
-    public static void main(String[] args) {
-        new ReverseStrByWord().reverseStrByWord();
-    }
+
 }
