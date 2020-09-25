@@ -31,6 +31,19 @@ public class Tree {
         System.out.print(node.val+ "\t");
     }
 
+    public static TreeNode createTreeByLevelOrder(int[] levelOrder) {
+        int len = levelOrder.length;
+        TreeNode[] nodes = new TreeNode[len];
+        for (int i = 0; i < len; i++) {
+            int val = levelOrder[i];
+            if(val < 0) continue;
+            nodes[i] = new TreeNode(val);
+            if (i % 2 == 1) nodes[(i-1)/2].left = nodes[i];
+            else nodes[(i-1)/2].right = nodes[i];
+        }
+        return nodes[0];
+    }
+
 
     //非递归的思路参考https://blog.csdn.net/z_ryan/article/details/80854233
     //Java实现参考https://www.cnblogs.com/0ffff/p/11095250.html
@@ -116,9 +129,9 @@ public class Tree {
     }
 
     public TreeNode creatTreeByPreAndIn(int[] preSeq, int[] inSeq) {
+        if (preSeq == null || inSeq == null) return null;
         int n = inSeq.length;
         if (n <= 0) return null;
-        if (preSeq == null || inSeq == null) return null;
         int pivot_idx = 0;
         for (int i = 0; i < n; i++) {
             if (preSeq[0] == inSeq[i]) {
@@ -126,6 +139,7 @@ public class Tree {
                 break;
             }
         }
+        // 递归的关键就在于{root,| left, left, ...| right, right, ...}与{left, left, ...| root,| right, right, ...}的left长度是相同的
         int[] leftPreSeq = Arrays.copyOfRange(preSeq, 1, pivot_idx+1);
         int[] rightPreSeq = Arrays.copyOfRange(preSeq, pivot_idx+1, n);
         int[] leftInSeq = Arrays.copyOfRange(inSeq, 0, pivot_idx);
